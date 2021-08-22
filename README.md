@@ -16,7 +16,7 @@ This repository contains the following GitHub Action workflows:
 
 - You can also trigger the above workflow using the following CURL, replace username and repo with your own username and repo name, also replace the request body with the actual repo and folder name to add:
 ```bash
-export TOKEN="" // get it from https://github.com/settings/tokens
+export TOKEN="" # get it from https://github.com/settings/tokens
 curl --location --request POST 'https://api.github.com/repos/{username}/{repo}/actions/workflows/add-project.yml/dispatches' \
 --header 'Authorization: Bearer $TOKEN' \
 --header 'Accept: application/vnd.github.v3+json' \
