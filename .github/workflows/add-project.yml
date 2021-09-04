@@ -8,7 +8,7 @@ on:
       folder_name:
         description: 'Folder Name'
         required: true
-concurrency: 
+concurrency:
     group: add-project
     cancel-in-progress: false
 jobs:
@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - name: Checkout Source
-         uses: actions/checkout@v2         
-         with:
-            submodules: "true"
+         uses: actions/checkout@v2
        - name: Add project as submodule
          run: |
+            git config pull.rebase true || true
+            git pull || true
             git submodule add ${{ github.event.inputs.repo_url }} "${{ github.event.inputs.folder_name }}"
        - name: Commit changes
          run: |
@@ -29,6 +29,4 @@ jobs:
             git config user.email bot@tinkerhub.org
             git add --all || true
             git commit -m "Added ${{ github.event.inputs.folder_name }}" || true
-            git config pull.rebase true || true
-            git pull || true
             git push --quiet
