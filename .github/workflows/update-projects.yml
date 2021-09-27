@@ -21,3 +21,5 @@ jobs:
             git add --all || true
             git commit -m "Updated projects" || true
             git push --quiet
+       - name: Repository keepalive 
+         uses: gautamkrishnar/keepalive-workflow@master
