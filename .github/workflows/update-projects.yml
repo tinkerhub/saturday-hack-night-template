@@ -4,6 +4,8 @@ on:
     # Runs every hour
     - cron: '0 * * * *'
   workflow_dispatch:
+permissions:
+  actions: write
 jobs:
   version-bump:
     name: Update Projects
@@ -22,4 +24,4 @@ jobs:
             git commit -m "Updated projects" || true
             git push --quiet
        - name: Repository keepalive 
-         uses: gautamkrishnar/keepalive-workflow@master
+         uses: gautamkrishnar/keepalive-workflow@v2
